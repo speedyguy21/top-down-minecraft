@@ -6,6 +6,7 @@ invertAxeImg.src =
   'https://stackblitz.com/storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBMHF3RHc9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--be53297481e28b22221acdea1c07577731738509/image.png';
 
 const canvas = document.getElementById('canvas');
+
 const ctx = canvas.getContext('2d');
 
 canvas.width = innerWidth;
