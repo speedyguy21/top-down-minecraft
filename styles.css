@@ -1,0 +1,31 @@
+html {
+  height: 100%;
+  width: 100%;
+  background: beige;
+  cursor: pointer;
+}
+
+canvas {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  cursor: pointer;
+}
+
+/*.canvas_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}*/
+
+#left_holder {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+canvas:hover {
+  cursor: progress;
+}
