@@ -425,6 +425,7 @@ Item.prototype = {
   offScreen: false,
   canDestroy: false,
   selected: false,
+  canBeHarvested: false,
   health: 100,
 
   getObjectId: function () {
@@ -448,9 +449,13 @@ Item.prototype = {
   },
 
   getHit: function () {
-    if (checkCollision(this.collider, tool)) {
+    if (
+      checkCollision(this.collider, tool) &&
+      this.canBeHarvested &&
+      this.canDestroy
+    ) {
       this.health -= tool.damage;
-      console.log(this.health);
+      alert(this.health);
     }
   },
 };
@@ -469,6 +474,7 @@ Tree.prototype.constructor = Tree;
 
 Tree.prototype.canCollide = true;
 Tree.prototype.canDestroy = true;
+Tree.prototype.canBeHarvested = true;
 
 Tree.prototype.checkOffScreen = function () {
   if (
@@ -661,6 +667,7 @@ function clampPositionToCircle(x, y, cx, cy, radius) {
 function moveLoop() {
   for (let i = 0; i < objects.length; i++) {
     objects[i].update();
+    objects[i].getHit();
   }
   wall.update();
   player.move();
