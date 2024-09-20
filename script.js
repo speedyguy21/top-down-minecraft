@@ -455,7 +455,6 @@ Item.prototype = {
       this.canDestroy
     ) {
       this.health -= tool.damage;
-      alert(this.health);
     }
   },
 };
@@ -667,7 +666,9 @@ function clampPositionToCircle(x, y, cx, cy, radius) {
 function moveLoop() {
   for (let i = 0; i < objects.length; i++) {
     objects[i].update();
-    objects[i].getHit();
+    if (objects[i].health != null) {
+      objects[i].getHit();
+    }
   }
   wall.update();
   player.move();
