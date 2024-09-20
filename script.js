@@ -285,6 +285,7 @@ const tool = {
   drawY: player.y,
   target: player,
   range: 75,
+  damage: 10,
 
   move: function () {
     this.x = this.target.x;
@@ -424,6 +425,7 @@ Item.prototype = {
   offScreen: false,
   canDestroy: false,
   selected: false,
+  health: 100,
 
   getObjectId: function () {
     for (let i = 0; i < objects.length; i++) {
@@ -442,6 +444,13 @@ Item.prototype = {
       ) {
         objects.splice(this.getObjectId(), 1);
       }
+    }
+  },
+
+  getHit: function () {
+    if (checkCollision(this.collider, tool)) {
+      this.health -= tool.damage;
+      console.log(this.health);
     }
   },
 };
@@ -520,11 +529,12 @@ Tree.prototype.draw = function () {
   ctx.closePath();
 };
 
-function OakTree(x, y, w, h) {
+function OakTree(x, y, w, h, health) {
   this.x = x;
   this.y = y;
   this.w = w;
   this.h = h;
+  this.health = health;
   this.collider = new Collider(
     this.x,
     this.h / 8 + this.y,
