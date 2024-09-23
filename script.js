@@ -455,6 +455,7 @@ Item.prototype = {
       this.canDestroy
     ) {
       this.health -= tool.damage;
+      alert(this.health);
     }
   },
 };
